@@ -1,0 +1,250 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  font-family: Arial, sans-serif;
+}
+
+/* General styles for the A4 area */
+.a4-container {
+  position: relative;
+  width: 210mm;
+  height: 297mm;
+
+  background: white;
+  border: 1px solid #a7a7a7;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+  box-sizing: border-box;
+  font-family: "Calibri", sans-serif;
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Button styles */
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.action-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.action-button:hover {
+  background-color: #0056b3;
+}
+
+.text-like-input {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: none;
+  background: none;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  text-align: start;
+}
+
+.text-like-input:focus {
+  outline: none;
+  border-bottom: 1px solid currentColor;
+}
+
+.text-like-input::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+.single {
+  display: grid;
+  grid-template-columns: 165px 1fr;
+}
+
+.double {
+  display: grid;
+  grid-template-columns: 165px 1fr 135px 160px;
+}
+
+h2 {
+  padding: 0;
+  text-align: center;
+}
+
+h4 {
+  margin-bottom: 5mm;
+}
+
+label {
+  font-weight: bold;
+}
+
+.signiture {
+  font-weight: bold;
+}
+
+.myinfo {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 5px;
+  margin-top: -20mm;
+}
+
+.datawrapper {
+  text-align: right;
+  width: 100%;
+  margin-top: -20mm;
+}
+
+.sinistre {
+  margin-top: -40mm;
+}
+
+.sinistre-content {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  border: black 1px solid;
+  padding: 5px;
+  gap: 5px;
+}
+
+.client {
+  margin-top: -40mm;
+}
+
+.client-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  border: black 1px solid;
+  padding: 5px;
+  gap: 5px;
+}
+
+.signiture-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+  font-weight: bold;
+  margin-top: -30mm;
+  margin-bottom: 70mm;
+}
+
+h1 {
+  text-align: center;
+  margin: 0px;
+  padding: 0px;
+}
+
+.InvoiceHeader {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  border-bottom: 1px solid black;
+}
+
+.InvoiceTop {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.InvoiceNumber {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  font-size: 22px;
+  margin-top: -20mm;
+  margin-bottom: -20mm;
+  gap: 10px;
+}
+
+.table-container {
+  display: grid;
+  grid-template-columns: 15mm 2fr 15mm 40mm 40mm;
+  grid-auto-rows: minmax(50px, auto);
+  width: 100%;
+  max-width: 800px;
+  align-content: center;
+  justify-content: center;
+  margin-bottom: -20mm;
+}
+
+.invoiceSigniture {
+  display: grid;
+  justify-content: end;
+  margin-right: 100px;
+  font-weight: bold;
+  margin-bottom: 50mm;
+}
+
+.cell {
+  padding: 10px;
+  border: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+}
+
+.cell.header {
+  font-weight: bold;
+  background-color: #f4f4f4;
+  justify-content: center;
+}
+
+.cell.numeric {
+  text-align: right;
+}
+
+.cell.center {
+  justify-content: center;
+  text-align: center;
+}
+
+.numeric-input {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.numeric-input input {
+  width: 100%;
+  text-align: right;
+  padding: 5px;
+}
+
+.cell {
+  padding: 8px;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* For Firefox
+      input[type="number"] {
+        -moz-appearance: textfield;
+      } */
+
+.footer {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  border-top: 1px solid black;
+  width: 100%;
+  padding-top: 2px;
+}

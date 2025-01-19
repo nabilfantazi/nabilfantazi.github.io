@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>A4 Paper</title>
+    <link rel="stylesheet" href="./A4.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body style="--bleeding: 0.5cm; --margin: 0.5cm">
+    <div class="page">
+      <h2>ANNEXE 3<br />FICHE D’INTERVENTION</h2>
+      <div class="datawrapper">
+        <label for="date">Taher le:</label>
+        <input class="text-like-input" type="date" id="date" />
+      </div>
+      <div class="myinfo">
+        <label for="prestataire">Prestataire :</label>
+        <input
+          type="text"
+          id="prestataire"
+          class="text-like-input"
+          value="FANTAZI NABIL"
+        />
+
+        <label for="adresse">Adresse :</label>
+        <input
+          type="text"
+          id="adresse"
+          class="text-like-input"
+          value="TAHER JIJEL"
+        />
+
+        <label for="tel">Tel:</label>
+        <input
+          type="text"
+          id="tel"
+          class="text-like-input"
+          value="0775 38 39 64"
+        />
+      </div>
+      <div class="sinistre">
+        <h4>Identification du sinistre</h4>
+        <div class="sinistre-content">
+          <label for="dossier">Dossier N°:</label>
+          <input type="text" id="dossier" class="text-like-input" />
+
+          <label for="sinistre">N° Sinistre:</label>
+          <input type="text" id="sinistre" class="text-like-input" />
+
+          <label for="vitre">Vitre:</label>
+          <input type="text" id="vitre" class="text-like-input" />
+        </div>
+      </div>
+      <div class="client">
+        <h4>Identification de l’assuré</h4>
+        <div class="client-content">
+          <div class="single">
+            <label for="name">Assuré:</label>
+            <input type="text" id="name" class="text-like-input" />
+          </div>
+          <div class="double">
+            <label for="clientAdresse">Adresse client:</label>
+            <input type="text" id="clientAdresse" class="text-like-input" />
+            <label for="clientTel">Telephone:</label>
+            <input type="text" id="clientTel" class="text-like-input" />
+          </div>
+          <div class="double">
+            <label for="marque">Modèle de véhicule:</label>
+            <input type="text" id="marque" class="text-like-input" />
+            <label for="immat">Immatriculation:</label>
+            <input type="text" id="immat" class="text-like-input" />
+          </div>
+          <div class="single">
+            <label for="police">N° de police:</label>
+            <input type="text" id="police" class="text-like-input" />
+          </div>
+          <div class="double">
+            <label for="effectdate">Date d'effect:</label>
+            <input type="date" id="effectdate" class="text-like-input" />
+            <label for="effectdate2">Date d'échéance:</label>
+            <input type="date" id="effectdate2" class="text-like-input" />
+          </div>
+        </div>
+      </div>
+      <div class="signiture-container">
+        <div>LE PRESTATAIRE</div>
+        <div>CLIENT/ASSURE</div>
+      </div>
+    </div>
+
+    <div class="page">
+      <div class="InvoiceHeader">
+        <h1>FANTAZI NABIL</h1>
+        <div>Fourniture et installation d'accessoires auto</div>
+      </div>
+
+      <div class="datawrapper">
+        <label for="dateFacture">Taher le:</label>
+        <input class="text-like-input" type="date" id="dateFacture" />
+      </div>
+      <div class="InvoiceTop">
+        <div class="myinfo" style="grid-template-columns: 50px 1fr">
+          <label for="RCN">RCN :</label>
+          <input
+            type="text"
+            id="RCN"
+            class="text-like-input"
+            value="18/00-2268677A20"
+            disabled
+          />
+          <label for="MFN">MFN :</label>
+          <input
+            type="text"
+            id="MFN"
+            class="text-like-input"
+            value="185182400637174"
+            disabled
+          />
+          <label for="AIN">AIN :</label>
+          <input
+            type="text"
+            id="AIN"
+            class="text-like-input"
+            value="18050142415"
+            disabled
+          />
+          <label for="adresseFacture"></label>
+          <input
+            type="text"
+            id="adresseFacture"
+            class="text-like-input"
+            value="TAHER JIJEL"
+            disabled
+          />
+        </div>
+        <div class="clinetInvoiceInfo">
+          <div class="datawrapper">
+            <label for="clientNameFacture">Facturé a: </label>
+            <input class="text-like-input" type="text" id="clientNameFacture" />
+          </div>
+        </div>
+      </div>
+      <div class="InvoiceNumber">
+        <label for="invoiceNumber" style="justify-self: end"
+          >Facture N° :</label
+        >
+        <input
+          class="text-like-input"
+          type="text"
+          id="invoiceNumber"
+          style="font-weight: bold; width: fit-content"
+        />
+      </div>
+      <div class="table-container">
+        <!-- Header Row -->
+        <div class="cell header">N</div>
+        <div class="cell header">Designation</div>
+        <div class="cell header">QTE</div>
+        <div class="cell header">PU</div>
+        <div class="cell header">Montant</div>
+
+        <!-- Data Row -->
+        <div class="cell center">1</div>
+        <div class="cell" style="display: flex; flex-direction: column">
+          <textarea
+            id="invoiceProductText"
+            class="text-like-input"
+            style="width: 100%; resize: none; overflow: hidden"
+          >
+  Montage Pare-brise VOLKSWAGEN GOLF 6 BLANCHE (ADAPTABLE)</textarea
+          >
+        </div>
+        <div class="cell center">
+          <div>
+            <input
+              id="invoiceQ"
+              type="number"
+              value="1"
+              class="text-like-input"
+              style="width: 100%; text-align: center"
+            />
+          </div>
+        </div>
+        <div class="cell numeric">
+          <div class="numeric-input">
+            <input
+              id="invoicePU"
+              type="number"
+              value="27500"
+              step="0.01"
+              class="text-like-input"
+            />
+            <span>DA</span>
+          </div>
+        </div>
+        <div class="cell numeric">
+          <div class="numeric-input">
+            <input
+              id="invoiceM"
+              type="number"
+              value="27500"
+              step="0.01"
+              class="text-like-input"
+            />
+            <span>DA</span>
+          </div>
+        </div>
+
+        <!-- Total HT -->
+        <div class="cell total-row" style="grid-column: 4">TOTAL H.T:</div>
+        <div class="cell numeric">
+          <div class="numeric-input">
+            <input
+              id="HT"
+              type="number"
+              value="27500"
+              step="0.01"
+              class="text-like-input"
+            />
+            <span>DA</span>
+          </div>
+        </div>
+
+        <!-- TVA -->
+        <div class="cell total-row" style="grid-column: 4">TVA 0%:</div>
+        <div class="cell numeric">
+          <div class="numeric-input">
+            <input
+              id="TVA"
+              type="number"
+              value="0.00"
+              step="0.01"
+              class="text-like-input"
+            />
+            <span>DA</span>
+          </div>
+        </div>
+
+        <!-- Total TTC -->
+        <div class="cell total-row" style="grid-column: 4">TOTAL T.T.C:</div>
+        <div class="cell numeric">
+          <div class="numeric-input">
+            <input
+              id="TTC"
+              type="number"
+              value="27500"
+              step="0.01"
+              class="text-like-input"
+            />
+            <span>DA</span>
+          </div>
+        </div>
+      </div>
+      <div class="invoiceSigniture">
+        <div>SIGNATURE</div>
+      </div>
+      <div class="footer">
+        <span style="align-self: flex-end">Siège social: Taher - Jijel</span>
+        <span>Telephone: 0775 38 39 64 - 0656 95 93 41</span>
+      </div>
+    </div>
+  </body>
+</html>
