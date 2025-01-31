@@ -1,11 +1,13 @@
-const textarea = document.querySelector("#invoiceProductText");
-console.log(textarea.scrollHeight);
-textarea.style.height = `${textarea.scrollHeight}px`;
+const SOURCEURL = "http://192.168.1.14:5501";
 
-textarea.addEventListener("input", () => {
-  textarea.style.height = "auto";
-  textarea.style.height = `${textarea.scrollHeight}px`;
-});
+// const textarea = document.querySelector("#invoiceProductText");
+// console.log(textarea.scrollHeight);
+// textarea.style.height = `${textarea.scrollHeight}px`;
+
+// textarea.addEventListener("input", () => {
+//   textarea.style.height = "auto";
+//   textarea.style.height = `${textarea.scrollHeight}px`;
+// });
 
 const dateRDV = document.getElementById("date");
 
@@ -28,47 +30,62 @@ const effectdate2Input = document.getElementById("effectdate2");
 const dateFactureInput = document.getElementById("dateFacture");
 
 //facture
-// const RCNInput = document.getElementById("RCN");
-// const MFNInput = document.getElementById("MFN");
-// const AINInput = document.getElementById("AIN");
-// const adresseFactureInput = document.getElementById("adresseFacture");
-// const HTInput = document.getElementById("HT");
-// const TVAInput = document.getElementById("TVA");
-// const TTCInput = document.getElementById("TTC");
 
-const clientNameFactureInput = document.getElementById("clientNameFacture");
-const invoiceNumberInput = document.getElementById("invoiceNumber");
-const invoiceProductTextInput = document.getElementById("invoiceProductText");
-const invoiceQInput = document.getElementById("invoiceQ");
-const invoicePUInput = document.getElementById("invoicePU");
-const invoiceMInput = document.getElementById("invoiceM");
+/////////////////////////////////////////////////////////////////
+// const clientNameFactureInput = document.getElementById("clientNameFacture");
+// const invoiceNumberInput = document.getElementById("invoiceNumber");
+// const invoiceProductTextInput = document.getElementById("invoiceProductText");
+// const invoiceQInput = document.getElementById("invoiceQ");
+// /////////////////////////////////////////////////////
+// const invoicePUInput = document.getElementById("invoicePU");
+// const invoiceMInput = document.getElementById("invoiceM");
+// const htInput = document.getElementById("HT");
+// const ttcInput = document.getElementById("TTC");
 
-window.addEventListener("message", (event) => {
-  const data = event.data;
+// function recalctulateMontant() {
+//   invoiceMInput.value =
+//     ttcInput.value =
+//     htInput.value =
+//       invoiceQInput.value * invoicePUInput.value;
+// }
+// invoicePUInput.addEventListener("input", recalctulateMontant);
+// invoiceQInput.addEventListener("input", recalctulateMontant);
 
-  dateRDV.value = data.date;
-  // prestataireInput.value = data.prestataire;
-  // prestataireAresseInput.value = data.prestataireAdresse;
-  // prestataireTelInput.value = data.prestataireTel;
-  dossierInput.value = data.dossier;
-  sinistreInput.value = data.sinistre;
-  vitreInput.value = data.vitre;
+window.addEventListener(
+  "message",
+  (event) => {
+    const data = event.data;
+    console.log(data);
+    dateRDV.value = data.dateRDV;
+    // prestataireInput.value = data.prestataire;
+    // prestataireAresseInput.value = data.prestataireAdresse;
+    // prestataireTelInput.value = data.prestataireTel;
+    dossierInput.value = data.dossier;
+    sinistreInput.value = data.sinis;
+    vitreInput.value = data.vitre;
+    //////////////////// fiche /////////////////////////
+    nameInput.value = `${data.lastname} ${data.firstname}`;
+    clientAdresseInput.value = data.clientAddress;
+    clientTelInput.value = data.phone; //
+    marqueInput.value = data.brand; //
+    immatInput.value = data.license; //
+    policeInput.value = data.police; //
+    effectdateInput.value = data.date1; //
+    effectdate2Input.value = data.date2; //
+    //////////////////// invoice /////////////////////////
+    // dateFactureInput.value = data.dateRDV;
+    // clientNameFactureInput.value = `${data.lastname} ${data.firstname}`;
+    // invoiceNumberInput.value = "1/C/2025";
+    // invoiceProductTextInput.value = `Montage ${data.vitre} ${data.brand} (ADAP)\nIMM: ${data.license}`;
 
-  nameInput.value = data.clientName;
-  clientAdresseInput.value = data.clientAdresse;
-  clientTelInput.value = data.clientTel;
-  marqueInput.value = data.marque;
-  immatInput.value = data.immat;
-  policeInput.value = data.police;
-  effectdateInput.value = data.effectdate;
-  effectdate2Input.value = data.effectdate2;
-  dateFactureInput.value = data.dateFacture;
+    // invoicePUInput.value = data.invoicePU;
+    // recalctulateMontant();
 
-  clientAdresseInput.value = data.name;
-  invoiceNumberInput.value = data.invoiceNumber;
-  invoiceProductTextInput.value = data.invoiceProductText;
+    window.print();
+  },
+  { once: true }
+);
 
-  invoiceQInput.value = data.invoiceQ;
-  invoicePUInput.value = data.invoicePU;
-  invoiceMInput.value = data.invoiceM;
+window.addEventListener("load", (event) => {
+  window.opener.postMessage("ready!", SOURCEURL);
 });
