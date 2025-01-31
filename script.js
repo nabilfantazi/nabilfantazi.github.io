@@ -1,4 +1,4 @@
-const SOURCEURL = "http://192.168.1.14:5501";
+const SOURCEURL = "https://portail.alloassistance.dz";
 
 // const textarea = document.querySelector("#invoiceProductText");
 // console.log(textarea.scrollHeight);
@@ -55,7 +55,7 @@ window.addEventListener(
   "message",
   (event) => {
     const data = event.data;
-    console.log(data);
+    document.title = `${data.lastname} ${data.firstname}`;
     dateRDV.value = data.dateRDV;
     // prestataireInput.value = data.prestataire;
     // prestataireAresseInput.value = data.prestataireAdresse;
