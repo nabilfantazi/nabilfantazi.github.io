@@ -47,6 +47,7 @@ window.addEventListener(
   "message",
   (event) => {
     const data = event.data;
+    console.log(data);
     document.title = `${data.lastname} ${data.firstname}`;
     dateRDV.value = data.dateRDV;
     // prestataireInput.value = data.prestataire;
@@ -80,4 +81,5 @@ window.addEventListener(
 
 window.addEventListener("load", (event) => {
   window.opener.postMessage("ready!", SOURCEURL);
+  console.log("ready sent!");
 });
