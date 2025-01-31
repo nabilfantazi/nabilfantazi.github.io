@@ -1,15 +1,6 @@
 // const SOURCEURL = "https://portail.alloassistance.dz";
 const SOURCEURL = "http://192.168.1.14:5501";
 
-// const textarea = document.querySelector("#invoiceProductText");
-// console.log(textarea.scrollHeight);
-// textarea.style.height = `${textarea.scrollHeight}px`;
-
-// textarea.addEventListener("input", () => {
-//   textarea.style.height = "auto";
-//   textarea.style.height = `${textarea.scrollHeight}px`;
-// });
-
 const dateRDV = document.getElementById("date");
 
 // const prestataireInput = document.getElementById("prestataire");
