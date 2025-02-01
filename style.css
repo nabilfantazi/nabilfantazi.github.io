@@ -85,7 +85,6 @@ h2 {
 }
 
 h4 {
-  margin-bottom: 5mm;
 }
 
 label {
@@ -100,17 +99,14 @@ label {
   display: grid;
   grid-template-columns: 100px 1fr;
   gap: 5px;
-  margin-top: -10mm;
 }
 
 .datawrapper {
   text-align: right;
   width: 100%;
-  margin-top: -20mm;
 }
 
 .sinistre {
-  margin-top: -40mm;
 }
 
 .sinistre-content {
@@ -122,7 +118,6 @@ label {
 }
 
 .client {
-  margin-top: -40mm;
 }
 
 .client-content {
@@ -139,7 +134,6 @@ label {
   justify-items: center;
   align-items: center;
   font-weight: bold;
-  margin-top: -30mm;
   margin-bottom: 70mm;
 }
 
@@ -167,8 +161,7 @@ h1 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   font-size: 22px;
-  margin-top: -20mm;
-  margin-bottom: -20mm;
+
   gap: 10px;
 }
 
@@ -180,7 +173,6 @@ h1 {
   max-width: 800px;
   align-content: center;
   justify-content: center;
-  margin-bottom: -20mm;
 }
 
 .invoiceSigniture {
