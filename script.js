@@ -1,5 +1,5 @@
-// const SOURCEURL = "https://portail.alloassistance.dz";
-const SOURCEURL = "http://192.168.1.14:5500";
+const SOURCEURL = "https://portail.alloassistance.dz";
+// const SOURCEURL = "http://192.168.1.14:5500";
 
 const dateRDV = document.getElementById("date");
 
