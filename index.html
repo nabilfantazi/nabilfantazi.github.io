@@ -93,5 +93,188 @@
         <div>CLIENT/ASSURE</div>
       </div>
     </div>
+    <div class="page">
+      <div class="InvoiceHeader">
+        <h1>FANTAZI NABIL</h1>
+        <div>Fourniture et installation d'accessoires auto</div>
+      </div>
+
+      <div class="datawrapper">
+        <label for="dateFacture">Taher le:</label>
+        <input class="text-like-input" type="date" id="dateFacture" />
+      </div>
+      <div class="InvoiceTop">
+        <div class="myinfo" style="grid-template-columns: 50px 1fr">
+          <label for="RCN">RCN :</label>
+          <input
+            type="text"
+            id="RCN"
+            class="text-like-input"
+            value="18/00-2268677A20"
+            disabled
+          />
+          <label for="MFN">MFN :</label>
+          <input
+            type="text"
+            id="MFN"
+            class="text-like-input"
+            value="185182400637174"
+            disabled
+          />
+          <label for="AIN">AIN :</label>
+          <input
+            type="text"
+            id="AIN"
+            class="text-like-input"
+            value="18050142415"
+            disabled
+          />
+          <label for="adresseFacture"></label>
+          <input
+            type="text"
+            id="adresseFacture"
+            class="text-like-input"
+            value="TAHER JIJEL"
+            disabled
+          />
+        </div>
+        <div class="clinetInvoiceInfo">
+          <label for="clientNameFacture">Client :</label>
+          <input class="text-like-input" type="text" id="clientNameFacture" />
+          <label for="dossierFacture">N° dossier :</label>
+          <input class="text-like-input" type="text" id="dossierFacture" />
+          <label for="modelFacture">Véhicule :</label>
+          <input class="text-like-input" type="text" id="modelFacture" />
+          <label for="ImmatriculationFacture">Immatriculation :</label>
+          <input
+            class="text-like-input"
+            type="text"
+            id="ImmatriculationFacture"
+          />
+        </div>
+      </div>
+      <div class="InvoiceNumber">
+        <label for="invoiceNumber" style="justify-self: end"
+          >Facture N° :</label
+        >
+        <input
+          class="text-like-input"
+          type="text"
+          id="invoiceNumber"
+          style="font-weight: bold; width: fit-content"
+        />
+      </div>
+      <div class="table-container">
+        <!-- Header Row -->
+        <div class="cell header">N</div>
+        <div class="cell header">Designation</div>
+        <div class="cell header">QTE</div>
+        <div class="cell header">PU</div>
+        <div class="cell header">Montant</div>
+
+        <!-- Data Row -->
+        <div class="cell center">1</div>
+        <div class="cell" style="display: flex; flex-direction: column">
+          <textarea
+            id="invoiceProductText"
+            class="text-like-input"
+            style="width: 100%; resize: none; overflow: hidden"
+          ></textarea>
+        </div>
+        <div class="cell center">
+          <div>
+            <input
+              id="invoiceQ"
+              type="text"
+              value="1"
+              class="text-like-input"
+              style="width: 100%; text-align: center"
+            />
+          </div>
+        </div>
+        <div class="cell numeric">
+          <div class="numeric-input">
+            <input
+              id="invoicePU"
+              type="text"
+              class="text-like-input"
+              placeholder="0,00"
+              disabled
+            />
+          </div>
+        </div>
+        <div class="cell numeric">
+          <div class="numeric-input">
+            <input
+              id="invoiceM"
+              type="text"
+              class="text-like-input"
+              placeholder="0,00"
+              disabled
+            />
+          </div>
+        </div>
+
+        <!-- Total HT -->
+        <div class="cell total-row" style="grid-column: 4">TOTAL H.T:</div>
+        <div class="cell numeric">
+          <div class="numeric-input">
+            <input
+              id="HT"
+              type="text"
+              class="text-like-input"
+              placeholder="0,00"
+              disabled
+            />
+          </div>
+        </div>
+
+        <!-- TVA -->
+        <div class="cell total-row" style="grid-column: 4">TVA 0%:</div>
+        <div class="cell numeric">
+          <div class="numeric-input">
+            <input
+              id="TVA"
+              type="text"
+              class="text-like-input"
+              value="0,00 DA"
+              disabled
+            />
+          </div>
+        </div>
+
+        <!-- Total TTC -->
+        <div class="cell total-row" style="grid-column: 4">TOTAL T.T.C:</div>
+        <div class="cell numeric">
+          <div class="numeric-input">
+            <input
+              id="TTC"
+              type="text"
+              class="text-like-input"
+              placeholder="0,00"
+              disabled
+            />
+          </div>
+        </div>
+      </div>
+      <div class="text" style="font-weight: 600">
+        Arrêté la présente facture à la somme de :
+        <br />
+        <textarea
+          id="toletters"
+          type="text"
+          style="width: 100%; resize: none; overflow: hidden"
+          class="text-like-input"
+        >
+        </textarea>
+      </div>
+      <div class="invoiceSigniture">
+        <div>SIGNATURE</div>
+      </div>
+      <div class="footer">
+        <span style="align-self: flex-end">Siège social: Taher - Jijel</span>
+        <span>Telephone: 0775 38 39 64 - 0656 95 93 41</span>
+      </div>
+    </div>
   </body>
 </html>

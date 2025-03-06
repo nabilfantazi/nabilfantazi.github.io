@@ -97,7 +97,12 @@ label {
 
 .myinfo {
   display: grid;
-  grid-template-columns: 100px 1fr;
+  grid-template-columns: auto 1fr;
+  gap: 5px;
+}
+.clinetInvoiceInfo {
+  display: grid;
+  grid-template-columns: auto 1fr;
   gap: 5px;
 }
 
@@ -153,7 +158,7 @@ h1 {
 
 .InvoiceTop {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: auto auto;
   gap: 10px;
 }
 
@@ -192,7 +197,7 @@ h1 {
 
 .cell.header {
   font-weight: bold;
-  background-color: #f4f4f4;
+  background-color: #e0e0e0;
   justify-content: center;
 }
 
