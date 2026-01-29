@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -8,13 +8,29 @@
     <link rel="stylesheet" href="./A4.css" />
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
+    <script src="controls.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.min.js"></script>
+    <!-- <script src="singiture.js" defer></script> -->
   </head>
   <body style="--bleeding: 0.5cm; --margin: 0.5cm">
+    <div class="controls">
+      <!-- Save as Image Button -->
+      <button id="saveAsImage" class="control-button image-button">
+        <img src="images/save.svg" alt="Download Icon" class="button-icon" />
+        Save as Image
+      </button>
+
+      <!-- Print Document Button -->
+      <button id="printPage" class="control-button print-button">
+        <img src="images/print.svg" alt="Print Icon" class="button-icon" />
+        Print Document
+      </button>
+    </div>
     <div class="page">
       <h2>ANNEXE 3<br />FICHE D’INTERVENTION</h2>
       <div class="datawrapper">
         <label for="date">Taher le:</label>
-        <input class="text-like-input" type="date" id="date" />
+        <input class="text-like-input" type="text" id="date" />
       </div>
       <div class="myinfo">
         <label for="prestataire">Prestataire :</label>
@@ -82,15 +98,25 @@
           </div>
           <div class="double">
             <label for="effectdate">Date d'effect:</label>
-            <input type="date" id="effectdate" class="text-like-input" />
+            <input type="text" id="effectdate" class="text-like-input" />
             <label for="effectdate2">Date d'échéance:</label>
-            <input type="date" id="effectdate2" class="text-like-input" />
+            <input type="text" id="effectdate2" class="text-like-input" />
           </div>
         </div>
       </div>
       <div class="signiture-container">
         <div>LE PRESTATAIRE</div>
         <div>CLIENT/ASSURE</div>
+        <div class="fichesignitures" id="cachetfiche">
+          <img
+            src="/images/empty1.png"
+            alt="cachet"
+            style="width: 100%; height: 100%"
+          />
+        </div>
+        <div class="fichesignitures" id="clientsigniture">
+                      <img src="/images/empty1.png" alt="cachet" />
+        </div>
       </div>
     </div>
     <div class="page">
@@ -101,7 +127,7 @@
 
       <div class="datawrapper">
         <label for="dateFacture">Taher le:</label>
-        <input class="text-like-input" type="date" id="dateFacture" />
+        <input class="text-like-input" type="text" id="dateFacture" />
       </div>
       <div class="InvoiceTop">
         <div class="myinfo" style="grid-template-columns: 50px 1fr">
@@ -267,8 +293,16 @@
         >
         </textarea>
       </div>
-      <div class="invoiceSigniture">
-        <div>SIGNATURE</div>
+      <div class="invoiceSignature">
+        <div class="sig-label">SIGNATURE</div>
+        <div class="image-container">
+          <div id="image2">
+            <img src="/images/empty2.png" alt="cachet" />
+          </div>
+          <div id="image1">
+            <img src="/images/empty1.png" alt="cachet" />
+          </div>
+        </div>
       </div>
       <div class="footer">
         <span style="align-self: flex-end">Siège social: Taher - Jijel</span>

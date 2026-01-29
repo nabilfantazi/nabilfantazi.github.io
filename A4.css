@@ -33,6 +33,21 @@ body {
   background: white;
 }
 
+.pagetoimage {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  height: 297mm;
+  width: 210mm;
+  font-size: 12pt;
+  /* margin: 1em auto; */
+  padding: calc(var(--bleeding) + var(--margin));
+  box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
+  background: white;
+  gap: 10px;
+}
+
 @media screen {
   .page::after {
     position: absolute;
@@ -53,4 +68,6 @@ body {
     margin: 0;
     overflow: hidden;
   }
+
 }
+

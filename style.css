@@ -58,6 +58,7 @@ body {
   outline: none;
   padding: 0;
   text-align: start;
+  
 }
 
 .text-like-input:focus {
@@ -92,6 +93,7 @@ label {
 }
 
 .signiture {
+  
   font-weight: bold;
 }
 
@@ -139,7 +141,7 @@ label {
   justify-items: center;
   align-items: center;
   font-weight: bold;
-  margin-bottom: 70mm;
+  margin-bottom: 30mm;
 }
 
 h1 {
@@ -175,24 +177,27 @@ h1 {
   grid-template-columns: 15mm 2fr 15mm 40mm 40mm;
   grid-auto-rows: minmax(50px, auto);
   width: 100%;
+  gap: 0;
+  background-color: transparent;
+  padding: 1px;
   max-width: 800px;
   align-content: center;
   justify-content: center;
 }
 
-.invoiceSigniture {
-  display: grid;
-  justify-content: end;
-  margin-right: 100px;
-  font-weight: bold;
-  margin-bottom: 50mm;
-}
-
 .cell {
-  padding: 10px;
-  border: 1px solid #ccc;
+  padding: 0px;
+  border: 1px solid #8a8a8a !important;
   display: flex;
   align-items: center;
+
+  background-color: white;
+
+
+  /* 3. Pull the cells to overlap the borders */
+  /* This makes the effective border width 1px everywhere */
+  margin-right: -1px;
+  margin-bottom: -1px;
 }
 
 .cell.header {
@@ -244,4 +249,292 @@ input[type="number"]::-webkit-outer-spin-button {
   border-top: 1px solid black;
   width: 100%;
   padding-top: 2px;
+}
+
+.fichesignitures {
+  width: 7.62cm;
+  height: 4.23cm;
+}
+
+.invoiceSignature {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* Aligns the whole block to the right */
+  margin-right: 50px;
+  margin-bottom: 50mm;
+  font-weight: bold;
+}
+
+.sig-label {
+  margin-bottom: 10px;
+  margin-right: 100px; /* Adjust to align with the gap in your screenshot */
+  z-index: 10000;
+}
+
+.image-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  justify-items: end;
+}
+
+/* Both images occupy the same grid area */
+#image1,
+#image2 {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+#image1 {
+width: 7.62cm;
+  height: auto;
+  z-index: 1; /* Sits behind image 2 */
+}
+
+#image2 {
+width: 5.08cm;
+  height: auto;
+  z-index: 2; /* Sits on top */
+  /* Shift image 2 up and to the left */
+  transform: translate(-5cm, -1cm);
+}
+
+#image1 img,
+#image2 img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+
+#clientsigniture img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+
+@page {
+  size: A4;
+  margin: 0;
+}
+
+body {
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+
+@media print {
+  html {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: white !important;
+  }
+  
+  .controls {
+    display: none !important;
+  }
+
+  .page {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    page-break-after: always;
+    page-break-inside: avoid;
+    margin: 0 !important;
+    padding: calc(var(--bleeding) + var(--margin)) !important;
+    box-shadow: none !important;
+    background: white !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    height: 297mm;
+  }
+
+  .page:last-child {
+    page-break-after: avoid;
+  }
+
+  .page * {
+    color: #000 !important;
+    background: none !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  font-family: Arial, sans-serif;
+}
+
+/* General styles for the A4 area */
+.a4-container {
+  position: relative;
+  width: 210mm;
+  height: 297mm;
+
+  background: white;
+  border: 1px solid #a7a7a7;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+  box-sizing: border-box;
+  font-family: "Calibri", sans-serif;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Button styles */
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.action-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.action-button:hover {
+  background-color: #0056b3;
+}
+
+.text-like-input {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: none;
+  background: none;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  text-align: start;
+  font-weight: bold;
+}
+
+.text-like-input:focus {
+  outline: 1px solid currentColor;
+}
+
+.text-like-input::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+
+/* --- Styles for controls div and buttons --- */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  background-color: #f7f7fa;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px 0 rgba(30, 41, 59, 0.06);
+  margin: 16px auto;
+  gap: 16px;
+  position: relative; /* so the tooltip is positioned relative to this */
+}
+
+.controls input[type="text"] {
+  flex-basis: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 7px;
+  font-size: 16px;
+  margin-top: 8px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.control-button {
+  display: flex;
+  align-items: center;
+  padding: 9px 20px;
+  font-weight: 500;
+  border-radius: 7px;
+  background: #f4f4f6;
+  color: #23272f;
+  border: 1px solid #e0e0e6;
+  box-shadow: 0 1px 2px 0 rgba(30, 41, 59, 0.04);
+  cursor: pointer;
+  outline: none;
+  transition: background 0.18s, color 0.18s, box-shadow 0.18s,
+    border-color 0.18s;
+  white-space: nowrap;
+}
+
+.control-button:focus {
+  box-shadow: 0 0 0 2px #b3c6f7;
+  border-color: #b3c6f7;
+}
+
+.clipboard-button {
+  background: #e6eaf3;
+  color: #2d3a4a;
+  border: 1px solid #d1d5db;
+}
+
+.clipboard-button:hover {
+  background: #d1d5db;
+  color: #1a2330;
+}
+
+.xml-button {
+  background: #f6f1e7;
+  color: #6b5b2c;
+  border: 1px solid #e5e7eb;
+}
+
+.xml-button:hover {
+  background: #ece6d6;
+  color: #4b3e1a;
+}
+
+.print-button {
+  background: #e7f6ed;
+  color: #295c3a;
+  border: 1px solid #d1e7dd;
+}
+
+.print-button:hover {
+  background: #d1e7dd;
+  color: #1d3d27;
+}
+
+.image-button {
+  background: #f6e7e7;
+  color: #6b2c2c;
+  border: 1px solid #e5d1d1;
+}
+
+.image-button:hover {
+  background: #ecd6d6;
+  color: #4b1a1a;
+}
+
+.button-icon {
+  margin-right: 8px;
+  flex-shrink: 0;
+  flex-grow: 0;
+  opacity: 0.85;
 }
