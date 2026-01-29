@@ -261,7 +261,7 @@ input[type="number"]::-webkit-outer-spin-button {
   flex-direction: column;
   align-items: flex-end; /* Aligns the whole block to the right */
   margin-right: 50px;
-  margin-bottom: 50mm;
+  margin-bottom: 10mm;
   font-weight: bold;
 }
 
@@ -355,6 +355,7 @@ body {
     flex-direction: column !important;
     justify-content: space-between !important;
     height: 297mm;
+
   }
 
   .page:last-child {
@@ -429,7 +430,7 @@ body {
   outline: none;
   padding: 0;
   text-align: start;
-  font-weight: bold;
+
 }
 
 .text-like-input:focus {
