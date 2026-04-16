@@ -211,58 +211,5 @@ function NumberToLetter(nombre, U = null, D = null) {
   return numberToLetter;
 }
 
-window.addEventListener(
-  "message",
-  (event) => {
-    const data = event.data;
-     if (!data || typeof data !== "object" || !data.lastname) return;
-    console.log(data);
-    document.title = `${data.lastname} ${data.firstname}`;
-    dateRDV.value = data.dateRDV;
-    // prestataireInput.value = data.prestataire;
-    // prestataireAresseInput.value = data.prestataireAdresse;
-    // prestataireTelInput.value = data.prestataireTel;
-    dossierInput.value = data.dossier;
-    sinistreInput.value = data.sinis;
-    vitreInput.value = data.vitre;
-    //////////////////// fiche /////////////////////////
-    nameInput.value = `${data.lastname} ${data.firstname}`;
-    clientAdresseInput.value = data.clientAddress;
-    clientTelInput.value = data.phone; //
-    marqueInput.value = data.brand; //
-    immatInput.value = data.license; //
-    policeInput.value = data.police; //
-    effectdateInput.value = data.date1; //
-    effectdate2Input.value = data.date2; //
-    //////////////////// invoice /////////////////////////
-    dateFactureInput.value = data.dateRDV;
-    clientNameFactureInput.value = `${data.lastname} ${data.firstname}`;
-    numDossier.value = data.dossier;
-    vehichule.value = data.brand;
-    immatriculation.value = data.license;
-
-    invoiceNumberInput.value = `${data.number}/${data.assurance.charAt(
-      0
-    )}/${new Date().getFullYear()}`;
-
-    invoiceProductTextInput.value = `Montage ${data.vitre} ${data.brand} (${data.product})`;
-    resizeTextArea();
-
-    invoicePUInput.value = formatDZD(data.invoicePU);
-    recalctulateMontant();
-    toLetters.value = NumberToLetter(data.invoicePU) + " dinars algérien";
-    window.print();
-  },
-  { once: true }
-);
 
 invoiceProductTextInput.addEventListener("input", resizeTextArea);
-
-window.addEventListener("load", () => {
-  if (window.opener && !window.opener.closed) {
-    window.opener.postMessage("ready!", SOURCEURL);
-    console.log("ready sent!");
-  } else {
-    console.log("No opener window; skipping ready message.");
-  }
-});
