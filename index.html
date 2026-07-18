@@ -124,7 +124,7 @@
             <script>
               document
                 .getElementById("date")
-                .addEventListener("input", function () {
+                .addEventListener("change", function () {
                   console.log("Date input changed:", this.value);
                   document.getElementById("dateClient").value = this.value;
                 });
