@@ -219,6 +219,7 @@ window.addEventListener(
     console.log(data);
     document.title = `${data.lastname} ${data.firstname}`;
     dateRDV.value = data.dateRDV;
+    document.getElementById("dateClient").value = data.dateRDV;
     // prestataireInput.value = data.prestataire;
     // prestataireAresseInput.value = data.prestataireAdresse;
     // prestataireTelInput.value = data.prestataireTel;
