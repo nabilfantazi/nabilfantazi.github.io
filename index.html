@@ -105,7 +105,39 @@
             <input type="text" id="effectdate2" class="text-like-input" />
           </div>
         </div>
+        <div class="ta3ahoud">
+          <p>
+            Je soussigné(e) certifie l’exactitude des informations fournies
+            ci-dessus et autorise la compagnie d’assurance à mandater un
+            réparateur agréé pour la réparation ou le remplacement du vitrage
+            endommagé, conformément aux conditions générales et particulières de
+            mon contrat.
+          </p>
+          <p>
+            J’accepte que la prise en charge soit effectuée en nature, sans
+            règlement direct entre mes mains, sous réserve de validation du
+            dossier.
+          </p>
+          <div style="display: flex; align-items: center; gap: 5px">
+            <label style="font-weight: 300">• Lieu et date : Taher, le:</label>
+            <input class="text-like-input" type="text" id="dateClient" />
+            <script>
+              document
+                .getElementById("date")
+                .addEventListener("input", function () {
+                  console.log("Date input changed:", this.value);
+                  document.getElementById("dateClient").value = this.value;
+                });
+            </script>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 10px">
+            <label style="font-weight: 300">• Signature de l'assuré :</label>
+            <input class="text-like-input" type="text" id="signatureAssuré" />
+          </div>
+        </div>
       </div>
+
       <div class="signiture-container">
         <div>LE PRESTATAIRE</div>
         <div>CLIENT/ASSURE</div>
@@ -117,7 +149,7 @@
           />
         </div>
         <div class="fichesignitures" id="clientsigniture">
-                      <img src="/images/empty1.png" alt="cachet" />
+          <img src="/images/empty1.png" alt="cachet" />
         </div>
       </div>
     </div>
@@ -129,7 +161,7 @@
 
       <div class="datawrapper">
         <label for="dateFacture">Taher le:</label>
-        <input class="text-like-input" type="text" id="dateFacture" />
+        <input class="text-like-input" type="text" id="dateclient" />
       </div>
       <div class="InvoiceTop">
         <div class="myinfo" style="grid-template-columns: 50px 1fr">

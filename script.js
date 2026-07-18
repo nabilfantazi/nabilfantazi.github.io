@@ -203,7 +203,7 @@ function NumberToLetter(nombre, U = null, D = null) {
   if (
     numberToLetter.substr(
       numberToLetter.length - "quatre-vingt".length,
-      "quatre-vingt".length
+      "quatre-vingt".length,
     ) == "quatre-vingt"
   )
     numberToLetter = numberToLetter + "s";
@@ -215,7 +215,7 @@ window.addEventListener(
   "message",
   (event) => {
     const data = event.data;
-     if (!data || typeof data !== "object" || !data.lastname) return;
+    if (!data || typeof data !== "object" || !data.lastname) return;
     console.log(data);
     document.title = `${data.lastname} ${data.firstname}`;
     dateRDV.value = data.dateRDV;
@@ -242,7 +242,7 @@ window.addEventListener(
     immatriculation.value = data.license;
 
     invoiceNumberInput.value = `${data.number}/${data.assurance.charAt(
-      0
+      0,
     )}/${new Date().getFullYear()}`;
 
     invoiceProductTextInput.value = `Montage ${data.vitre} ${data.brand} (${data.product})`;
@@ -253,7 +253,7 @@ window.addEventListener(
     toLetters.value = NumberToLetter(data.invoicePU) + " dinars algérien";
     window.print();
   },
-  { once: true }
+  { once: true },
 );
 
 invoiceProductTextInput.addEventListener("input", resizeTextArea);
@@ -266,3 +266,4 @@ window.addEventListener("load", () => {
     console.log("No opener window; skipping ready message.");
   }
 });
+

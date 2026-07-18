@@ -539,3 +539,19 @@ body {
   flex-grow: 0;
   opacity: 0.85;
 }
+.ta3ahoud {
+  margin: 0.5cm 0;
+  text-indent: 1.5em;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.ta3ahoud p {
+  margin: 8px 0;
+  text-align: justify;
+}
+
+.ta3ahoud li {
+  margin-left: 20px;
+  margin-top: 8px;
+}
