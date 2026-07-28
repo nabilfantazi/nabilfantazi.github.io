@@ -211,6 +211,143 @@ function NumberToLetter(nombre, U = null, D = null) {
   return numberToLetter;
 }
 
+// Helper to parse dates and format them as dd/mm/yyyy
+const formatDate = (dateString) => {
+  if (!dateString) return "";
+  const d = new Date(dateString);
+
+  // If the date is invalid, return the original string as a fallback
+  if (isNaN(d.getTime())) return dateString;
+
+  const day = String(d.getDate()).padStart(2, "0");
+  const month = String(d.getMonth() + 1).padStart(2, "0");
+  const year = d.getFullYear();
+
+  return `${day}/${month}/${year}`;
+};
+
+// Helper to extract Marque and Modèle from 'vehicle_model'
+const getVehicleDetails = (vehicleString) => {
+  if (!vehicleString) return { marque: "", modele: "" };
+  const parts = vehicleString.split(" ");
+  const marque = parts[0] || "";
+  const modele = parts.slice(1).join(" ") || "";
+  return { marque, modele };
+};
+function fillInterventionForm(data) {
+  // =========================================================
+  // 1. GENERAL DATES
+  // =========================================================
+  // Note: These are set to today's date by default, but can be updated manually.
+  
+  if (document.getElementById("date")) {
+    document.getElementById("date").value = data.dateRDV;
+  }
+  if (document.getElementById("dateClient")) {
+    document.getElementById("dateClient").value = data.dateRDV;
+  }
+
+  // =========================================================
+  // 2. MAPPED FIELDS (Populated directly from JSON data)
+  // =========================================================
+  
+  // --- Accident & Dossier Details ---
+  if (document.getElementById("fiche_dossier")) {
+    document.getElementById("fiche_dossier").value = data.dossier || "";
+  }
+  if (document.getElementById("fiche_sinistre")) {
+    document.getElementById("fiche_sinistre").value = data.sinis || "";
+  }
+
+  // --- Dynamic Checkboxes (Nature of Intervention) ---
+  // Checks boxes based on exact text matches between the JSON array and HTML labels.
+  if (data.nature && Array.isArray(data.vitre)) {
+    const checklistLabels = document.querySelectorAll(".checklist-item");
+
+    data.nature.forEach((natureItem) => {
+      const itemToMatch = natureItem.trim().toUpperCase();
+
+      checklistLabels.forEach((label) => {
+        const labelText = label.textContent.trim().toUpperCase();
+
+        // If the label text matches the data item, find and check the associated checkbox
+        if (labelText === itemToMatch) {
+          const checkbox = label.querySelector('input[type="checkbox"]');
+          if (checkbox) {
+            checkbox.checked = true;
+          }
+        }
+      });
+    });
+  }
+
+  // --- Client / Assuré Information ---
+  if (document.getElementById("fiche_assure")) {
+    // Fallbacks to fname + lname if full_name is missing
+    document.getElementById("fiche_assure").value = `${data.lastname} ${data.firstname}`;
+  }
+  // --- Client Address & Phone ---
+   if (document.getElementById("fiche_adresse")) {
+    document.getElementById("fiche_adresse").value = data.clientAddress || "";
+  }
+  if (document.getElementById("fiche_telephone")) {
+    // Strips out any non-numeric characters (e.g., dots, spaces)
+    document.getElementById("fiche_telephone").value = (data.phone || "").replace(/[^\d/]/g, "").replace(/\//g, " / ");
+  }
+
+  // --- Vehicle Identification ---
+  const { marque, modele } = getVehicleDetails(data.data.brand);
+  
+  if (document.getElementById("fiche_marque_vehicule")) {
+    document.getElementById("fiche_marque_vehicule").value = marque;
+  }
+  if (document.getElementById("fiche_modele_vehicule")) {
+    document.getElementById("fiche_modele_vehicule").value = modele;
+  }
+  if (document.getElementById("fiche_immatriculation")) {
+    document.getElementById("fiche_immatriculation").value = data.license || "";
+  }
+
+  // --- Insurance Policy Information ---
+  if (document.getElementById("fiche_police")) {
+    document.getElementById("fiche_police").value = data.police || "";
+  }
+  if (document.getElementById("fiche_date_effet")) {
+    // Requires the 'formatDate' helper function to be present in the script
+    document.getElementById("fiche_date_effet").value = formatDate(data.date1);
+  }
+  if (document.getElementById("fiche_date_echeance")) {
+    document.getElementById("fiche_date_echeance").value = formatDate(data.date2);
+  }
+
+  // =========================================================
+  // 3. UNMAPPED FIELDS (Placeholders)
+  // =========================================================
+  // These fields are not provided in the JSON and are filled with placeholder text.
+
+  // --- Accident Context ---
+  if (document.getElementById("fiche_date_accident")) {
+    document.getElementById("fiche_date_accident").value = "";
+  }
+  if (document.getElementById("fiche_heure_accident")) {
+    document.getElementById("fiche_heure_accident").value = "";
+  }
+  if (document.getElementById("fiche_lieu_accident")) {
+    document.getElementById("fiche_lieu_accident").value = "";
+  }
+  if (document.getElementById("fiche_ville_accident")) {
+    document.getElementById("fiche_ville_accident").value = "";
+  }
+  
+  // --- Miscellaneous ---
+  if (document.getElementById("fiche_marque_produit")) {
+    document.getElementById("fiche_marque_produit").value = "";
+  }
+ 
+  if (document.getElementById("fiche_chassis")) {
+    document.getElementById("fiche_chassis").value = "";
+  }
+}
 window.addEventListener(
   "message",
   (event) => {
@@ -218,23 +355,7 @@ window.addEventListener(
     if (!data || typeof data !== "object" || !data.lastname) return;
     console.log(data);
     document.title = `${data.lastname} ${data.firstname}`;
-    dateRDV.value = data.dateRDV;
-    document.getElementById("dateClient").value = data.dateRDV;
-    // prestataireInput.value = data.prestataire;
-    // prestataireAresseInput.value = data.prestataireAdresse;
-    // prestataireTelInput.value = data.prestataireTel;
-    dossierInput.value = data.dossier;
-    sinistreInput.value = data.sinis;
-    vitreInput.value = data.vitre;
-    //////////////////// fiche /////////////////////////
-    nameInput.value = `${data.lastname} ${data.firstname}`;
-    clientAdresseInput.value = data.clientAddress;
-    clientTelInput.value = data.phone; //
-    marqueInput.value = data.brand; //
-    immatInput.value = data.license; //
-    policeInput.value = data.police; //
-    effectdateInput.value = data.date1; //
-    effectdate2Input.value = data.date2; //
+ fillInterventionForm(data);
     //////////////////// invoice /////////////////////////
     dateFactureInput.value = data.dateRDV;
     clientNameFactureInput.value = `${data.lastname} ${data.firstname}`;

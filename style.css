@@ -3,46 +3,8 @@ body {
   padding: 0;
   background-color: #f4f4f4;
   font-family: Arial, sans-serif;
-}
-
-/* General styles for the A4 area */
-.a4-container {
-  position: relative;
-  width: 210mm;
-  height: 297mm;
-
-  background: white;
-  border: 1px solid #a7a7a7;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-
-  box-sizing: border-box;
-  font-family: "Calibri", sans-serif;
-  font-size: 18px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-/* Button styles */
-.button-container {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin: 20px 0;
-}
-
-.action-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.action-button:hover {
-  background-color: #0056b3;
+  --bleeding: 0.5cm;
+  --margin: 0.5cm;
 }
 
 .text-like-input {
@@ -58,26 +20,15 @@ body {
   outline: none;
   padding: 0;
   text-align: start;
-  
+  font-weight: bold;
 }
 
 .text-like-input:focus {
-  outline: none;
-  border-bottom: 1px solid currentColor;
+  outline: 1px solid currentColor;
 }
 
 .text-like-input::-webkit-calendar-picker-indicator {
   display: none;
-}
-
-.single {
-  display: grid;
-  grid-template-columns: 165px 1fr;
-}
-
-.double {
-  display: grid;
-  grid-template-columns: 165px 1fr 135px 160px;
 }
 
 h2 {
@@ -85,23 +36,12 @@ h2 {
   text-align: center;
 }
 
-h4 {
-}
-
-label {
-  font-weight: bold;
-}
-
-.signiture {
-  
-  font-weight: bold;
-}
-
 .myinfo {
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 5px;
 }
+
 .clinetInvoiceInfo {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -113,34 +53,13 @@ label {
   width: 100%;
 }
 
-.sinistre {
-}
-
-.sinistre-content {
-  display: grid;
-  grid-template-columns: 90px 1fr;
-  border: black 1px solid;
-  padding: 5px;
-  gap: 5px;
-}
-
-.client {
-}
-
-.client-content {
-  display: grid;
-  grid-template-columns: 1fr;
-  border: black 1px solid;
-  padding: 5px;
-  gap: 5px;
-}
-
 .signiture-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-items: center;
   align-items: center;
   font-weight: bold;
+  margin-top: 5mm;
   margin-bottom: 30mm;
 }
 
@@ -168,7 +87,6 @@ h1 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   font-size: 22px;
-
   gap: 10px;
 }
 
@@ -186,16 +104,11 @@ h1 {
 }
 
 .cell {
-  padding: 0px;
+  padding: 8px;
   border: 1px solid #8a8a8a !important;
   display: flex;
   align-items: center;
-
   background-color: white;
-
-
-  /* 3. Pull the cells to overlap the borders */
-  /* This makes the effective border width 1px everywhere */
   margin-right: -1px;
   margin-bottom: -1px;
 }
@@ -227,20 +140,11 @@ h1 {
   padding: 5px;
 }
 
-.cell {
-  padding: 8px;
-}
-
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
-/* For Firefox
-      input[type="number"] {
-        -moz-appearance: textfield;
-      } */
 
 .footer {
   display: flex;
@@ -259,7 +163,7 @@ input[type="number"]::-webkit-outer-spin-button {
 .invoiceSignature {
   display: flex;
   flex-direction: column;
-  align-items: flex-end; /* Aligns the whole block to the right */
+  align-items: flex-end;
   margin-right: 50px;
   margin-bottom: 10mm;
   font-weight: bold;
@@ -267,7 +171,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .sig-label {
   margin-bottom: 10px;
-  margin-right: 100px; /* Adjust to align with the gap in your screenshot */
+  margin-right: 100px;
   z-index: 10000;
 }
 
@@ -278,7 +182,6 @@ input[type="number"]::-webkit-outer-spin-button {
   justify-items: end;
 }
 
-/* Both images occupy the same grid area */
 #image1,
 #image2 {
   grid-column: 1;
@@ -286,161 +189,25 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 #image1 {
-width: 7.62cm;
+  width: 7.62cm;
   height: auto;
-  z-index: 1; /* Sits behind image 2 */
+  z-index: 1;
 }
 
 #image2 {
-width: 5.08cm;
+  width: 5.08cm;
   height: auto;
-  z-index: 2; /* Sits on top */
-  /* Shift image 2 up and to the left */
+  z-index: 2;
   transform: translate(-5cm, -1cm);
 }
 
 #image1 img,
-#image2 img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-
+#image2 img,
 #clientsigniture img {
   display: block;
   width: 100%;
   height: auto;
 }
-
-
-@page {
-  size: A4;
-  margin: 0;
-}
-
-body {
-  print-color-adjust: exact;
-  -webkit-print-color-adjust: exact;
-}
-
-@media print {
-  html {
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-  
-  body {
-    margin: 0 !important;
-    padding: 0 !important;
-    background: white !important;
-  }
-  
-  .controls {
-    display: none !important;
-  }
-
-  .page {
-    position: relative;
-    top: auto;
-    left: auto;
-    width: 100%;
-    page-break-after: always;
-    page-break-inside: avoid;
-    margin: 0 !important;
-    padding: calc(var(--bleeding) + var(--margin)) !important;
-    box-shadow: none !important;
-    background: white !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: space-between !important;
-    height: 297mm;
-
-  }
-
-  .page:last-child {
-    page-break-after: avoid;
-  }
-
-  .page * {
-    color: #000 !important;
-    background: none !important;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-  }
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  background-color: #f4f4f4;
-  font-family: Arial, sans-serif;
-}
-
-/* General styles for the A4 area */
-.a4-container {
-  position: relative;
-  width: 210mm;
-  height: 297mm;
-
-  background: white;
-  border: 1px solid #a7a7a7;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-
-  box-sizing: border-box;
-  font-family: "Calibri", sans-serif;
-  font-size: 14px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-/* Button styles */
-.button-container {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin: 20px 0;
-}
-
-.action-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.action-button:hover {
-  background-color: #0056b3;
-}
-
-.text-like-input {
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  border: none;
-  background: none;
-  font-family: inherit;
-  font-size: inherit;
-  color: inherit;
-  cursor: pointer;
-  outline: none;
-  padding: 0;
-  text-align: start;
-
-}
-
-.text-like-input:focus {
-  outline: 1px solid currentColor;
-}
-
-.text-like-input::-webkit-calendar-picker-indicator {
-  display: none;
-}
-
 
 /* --- Styles for controls div and buttons --- */
 .controls {
@@ -454,17 +221,7 @@ body {
   box-shadow: 0 2px 8px 0 rgba(30, 41, 59, 0.06);
   margin: 16px auto;
   gap: 16px;
-  position: relative; /* so the tooltip is positioned relative to this */
-}
-
-.controls input[type="text"] {
-  flex-basis: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 7px;
-  font-size: 16px;
-  margin-top: 8px;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  position: relative;
 }
 
 .control-button {
@@ -489,49 +246,11 @@ body {
   border-color: #b3c6f7;
 }
 
-.clipboard-button {
-  background: #e6eaf3;
-  color: #2d3a4a;
-  border: 1px solid #d1d5db;
-}
+.print-button { background: #e7f6ed; color: #295c3a; border: 1px solid #d1e7dd; }
+.print-button:hover { background: #d1e7dd; color: #1d3d27; }
 
-.clipboard-button:hover {
-  background: #d1d5db;
-  color: #1a2330;
-}
-
-.xml-button {
-  background: #f6f1e7;
-  color: #6b5b2c;
-  border: 1px solid #e5e7eb;
-}
-
-.xml-button:hover {
-  background: #ece6d6;
-  color: #4b3e1a;
-}
-
-.print-button {
-  background: #e7f6ed;
-  color: #295c3a;
-  border: 1px solid #d1e7dd;
-}
-
-.print-button:hover {
-  background: #d1e7dd;
-  color: #1d3d27;
-}
-
-.image-button {
-  background: #f6e7e7;
-  color: #6b2c2c;
-  border: 1px solid #e5d1d1;
-}
-
-.image-button:hover {
-  background: #ecd6d6;
-  color: #4b1a1a;
-}
+.image-button { background: #f6e7e7; color: #6b2c2c; border: 1px solid #e5d1d1; }
+.image-button:hover { background: #ecd6d6; color: #4b1a1a; }
 
 .button-icon {
   margin-right: 8px;
@@ -539,19 +258,232 @@ body {
   flex-grow: 0;
   opacity: 0.85;
 }
+
 .ta3ahoud {
-  margin: 0.5cm 0;
-  text-indent: 1.5em;
+  margin: 0.2cm 0;
+  text-indent: 0.5cm;
   font-size: 14px;
   line-height: 1.6;
 }
 
 .ta3ahoud p {
-  margin: 8px 0;
+  margin: 0;
   text-align: justify;
 }
 
-.ta3ahoud li {
-  margin-left: 20px;
-  margin-top: 8px;
+@page {
+  size: A4;
+  margin: 0;
+}
+
+@media print {
+  html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: white !important;
+  }
+  
+  .controls {
+    display: none !important;
+  }
+
+  .page {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    page-break-after: always;
+    page-break-inside: avoid;
+    margin: 0 !important;
+    padding: calc(var(--bleeding) + var(--margin)) !important;
+    box-shadow: none !important;
+    background: white !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    height: 297mm;
+  }
+
+  .page:last-child {
+    page-break-after: avoid;
+  }
+
+  .page * {
+    color: #000 !important;
+    background: none !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+
+/* ============================================================== 
+   NEW UTILITY & COMPONENT CLASSES (Replaces Inline HTML Styles) 
+   ============================================================== */
+
+/* Fiche d'intervention Components */
+.fiche-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.fiche-header h4 {
+  margin: 0;
+}
+
+.fiche-header h2 {
+  margin: 0;
+  text-decoration: underline;
+}
+
+.section-box {
+  border: 1px solid #000;
+}
+
+.section-title {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #000;;
+  padding: 3px;
+  width: fit-content;
+}
+
+.checklist-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+/* Checklist item using Grid to push checkbox to the right */
+.checklist-item {
+  display: grid;
+  grid-template-columns: 1fr auto; 
+  align-items: center;
+  cursor: pointer;
+}
+/* ============================================================== 
+   TABLE GRID LAYOUT UTILITIES (REAL BORDERS FOR PRINT)
+   ============================================================== */
+
+/* Main wrapper creates the top and left outer borders */
+.grid-table {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); 
+  border-top: 1px solid #000;
+  border-left: 1px solid #000;
+}
+
+/* Every child cell gets a bottom and right border to form the grid */
+.grid-table > div,
+.grid-table > label {
+  border-bottom: 1px solid #000;
+  border-right: 1px solid #000;
+  box-sizing: border-box; /* Prevents borders from expanding the grid */
+}
+
+/* Standard cell padding */
+.grid-table > div:not(.checklist-item) {
+  padding: 1px 4px;
+}
+
+/* Apply form layout only to cells that aren't the center separator ("A") */
+.grid-table > div:not(.checklist-item):not(.text-center) {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Specific styling for checklist item cells */
+.grid-table > .checklist-item {
+  padding: 1px 4px;
+  display: grid;
+  grid-template-columns: 1fr auto; /* Pushes checkbox to the far right */
+  align-items: center;
+  cursor: pointer;
+  margin: 0;
+}
+
+/* Column Spanning Helper Classes */
+.col-span-2 { grid-column: span 2; }
+.col-span-3 { grid-column: span 3; }
+.col-span-4 { grid-column: span 4; }
+.col-span-6 { grid-column: span 6; }
+
+/* ============================================================== 
+   FLEXBOX & SPACING UTILITIES
+   ============================================================== */
+
+/* Flex Layout */
+.flex-row { display: flex; }
+.flex-col { display: flex; flex-direction: column; }
+.justify-between { justify-content: space-between; }
+.align-center { align-items: center; }
+
+/* General Grid Layout Utilities */
+.grid-col-full { grid-column: 1 / -1; }
+.grid-col-4 { grid-column: 4; }
+.grid-50-1fr { grid-template-columns: 50px 1fr; }
+.justify-self-end { justify-self: end; }
+.align-self-end { align-self: flex-end; }
+
+/* Spacing Utilities */
+.gap-5 { gap: 5px; }
+.gap-10 { gap: 10px; }
+
+.mb-5 { margin-bottom: 5px; }
+.mt-5 { margin-top: 5px; }
+.mt-15 { margin-top: 15px; }
+
+/* Typography & Sizing Utilities */
+.text-justify-sm {
+  text-align: justify;
+
+}
+.text-center { text-align: center; }
+.font-bold { font-weight: bold; }
+.font-600 { font-weight: 600; }
+
+.w-100 { width: 100%; }
+.w-100px { width: 100px; }
+.w-150px { width: 150px; }
+.w-fit { width: fit-content; }
+.h-100 { height: 100%; }
+
+/* Form Field Overrides */
+.textarea-auto {
+  resize: none;
+  overflow: hidden;
+}
+/* ============================================================== 
+   CUSTOM PRINT CHECKBOXES (X mark)
+   ============================================================== */
+
+.grid-table input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: #fff;
+  margin: 0;
+  font: inherit;
+  color: currentColor;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #000; /* Sharp, clear border for print */
+  border-radius: 0; /* Keep it perfectly square */
+  display: grid;
+  place-content: center;
+  cursor: pointer;
+}
+
+.grid-table input[type="checkbox"]::before {
+  content: "×"; /* Unicode for the ✕ symbol */
+  font-family: Arial, sans-serif;
+  font-size: 26px; 
+
+  color: #000;
+  transform: scale(0); /* Hide the mark by default */
+  line-height: 1;
+  margin-top: 1px; /* Centers it perfectly inside the 16x16 box */
+}
+
+.grid-table input[type="checkbox"]:checked::before {
+  transform: scale(1); /* Show the X when clicked/checked */
 }

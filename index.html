@@ -10,141 +10,144 @@
     <script src="script.js" defer></script>
     <script src="controls.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.min.js"></script>
-    <!-- <script src="singiture.js" defer></script> -->
   </head>
-  <body style="--bleeding: 0.5cm; --margin: 0.5cm">
+  <body>
     <div class="controls">
       <button id="costumButton" class="control-button image-button">
         <img src="images/costum.png" />
       </button>
-      <!-- Save as Image Button -->
       <button id="saveAsImage" class="control-button image-button">
         <img src="images/save.svg" alt="Download Icon" class="button-icon" />
         Save as Image
       </button>
-      <!-- Print Document Button -->
       <button id="printPage" class="control-button print-button">
         <img src="images/print.svg" alt="Print Icon" class="button-icon" />
         Print Document
       </button>
     </div>
+    
+    <!-- PAGE 1: FICHE D'INTERVENTION -->
     <div class="page">
-      <h2>ANNEXE 3<br />FICHE D’INTERVENTION</h2>
+      <div class="fiche-header">
+        <h4>ANNEXE 3</h4>
+        <h2>FICHE D’INTERVENTION</h2>
+      </div>
+
       <div class="datawrapper">
         <label for="date">Taher le:</label>
-        <input class="text-like-input" type="text" id="date" />
+        <input class="text-like-input" type="text" id="date"  />
       </div>
+
+      <!-- PRESTATAIRE -->
       <div class="myinfo">
         <label for="prestataire">Prestataire :</label>
-        <input
-          type="text"
-          id="prestataire"
-          class="text-like-input"
-          value="FANTAZI NABIL"
-          disabled
-        />
-
+        <input type="text" id="prestataire" class="text-like-input" value="FANTAZI NABIL" disabled />
         <label for="adresse">Adresse :</label>
-        <input
-          type="text"
-          id="adresse"
-          class="text-like-input"
-          value="TAHER JIJEL"
-          disabled
-        />
-
+        <input type="text" id="adresse" class="text-like-input" value="TAHER JIJEL" disabled />
         <label for="tel">Tel:</label>
-        <input
-          type="text"
-          id="tel"
-          class="text-like-input"
-          value="0775 38 39 64"
-          disabled
-        />
-      </div>
-      <div class="sinistre">
-        <h4>Identification du sinistre</h4>
-        <div class="sinistre-content">
-          <label for="dossier">Dossier N°:</label>
-          <input type="text" id="dossier" class="text-like-input" />
+                <input type="text" id="tel" class="text-like-input w-200px" value="0775 38 39 64" disabled />
+                <label>Fax:</label>
+                <input type="text" class="text-like-input w-200px" value="/" disabled />
 
-          <label for="sinistre">N° Sinistre:</label>
-          <input type="text" id="sinistre" class="text-like-input" />
-
-          <label for="vitre">Vitre:</label>
-          <input type="text" id="vitre" class="text-like-input" />
-        </div>
       </div>
-      <div class="client">
-        <h4>Identification de l’assuré</h4>
-        <div class="client-content">
-          <div class="single">
-            <label for="name">Assuré:</label>
-            <input type="text" id="name" class="text-like-input" />
-          </div>
-          <div class="double">
-            <label for="clientAdresse">Adresse client:</label>
-            <input type="text" id="clientAdresse" class="text-like-input" />
-            <label for="clientTel">Telephone:</label>
-            <input type="text" id="clientTel" class="text-like-input" />
-          </div>
-          <div class="double">
-            <label for="marque">Modèle de véhicule:</label>
-            <input type="text" id="marque" class="text-like-input" />
-            <label for="immat">Immatriculation:</label>
-            <input type="text" id="immat" class="text-like-input" />
-          </div>
-          <div class="single">
-            <label for="police">N° de police:</label>
-            <input type="text" id="police" class="text-like-input" />
-          </div>
-          <div class="double">
-            <label for="effectdate">Date d'effect:</label>
-            <input type="text" id="effectdate" class="text-like-input" />
-            <label for="effectdate2">Date d'échéance:</label>
-            <input type="text" id="effectdate2" class="text-like-input" />
-          </div>
-        </div>
-        <div class="ta3ahoud">
-          <p>
-            Je soussigné(e) certifie l’exactitude des informations fournies
-            ci-dessus et autorise la compagnie d’assurance à mandater un
-            réparateur agréé pour la réparation ou le remplacement du vitrage
-            endommagé, conformément aux conditions générales et particulières de
-            mon contrat.
+      <h4 class="section-title">Identification du sinistre</h4>
+<!-- Accident Details & Checklist -->
+<div class="grid-table">
+  <!-- Accident Details -->
+  <div class="col-span-6"><label>Dossier N°:</label> <input type="text" id="fiche_dossier" class="text-like-input w-100" /></div>
+  <div class="col-span-6"><label>N° Sinistre:</label> <input type="text" id="fiche_sinistre" class="text-like-input w-100" /></div>
+
+  <div class="col-span-3"><label>Date d'accident:</label> <input type="text" id="fiche_date_accident" class="text-like-input w-100"  /></div>
+  <div class="col-span-3"><label>Heure d'accident:</label> <input type="text" id="fiche_heure_accident" class="text-like-input w-100"  /></div>
+  
+  <div class="col-span-3"><label>Lieu d'accident:</label> <input type="text" id="fiche_lieu_accident" class="text-like-input w-100" /></div>
+  <div class="col-span-3"><label>Ville:</label> <input type="text" id="fiche_ville_accident" class="text-like-input w-100" /></div>
+  
+  <!-- Separator Cell -->
+  <div class="col-span-6 text-center font-bold">A</div>
+  
+  <!-- Checklist -->
+  <label class="checklist-item col-span-3">Pare brise <input type="checkbox" id="check_pare_brise"></label>
+  <label class="checklist-item col-span-3">Lunette arrière <input type="checkbox" id="check_lunette_ar"></label>
+  
+  <label class="checklist-item col-span-3">Vitre latérale avant gauche <input type="checkbox" id="check_vitre_avg"></label>
+  <label class="checklist-item col-span-3">Vitre latérale arrière gauche <input type="checkbox" id="check_vitre_arg"></label>
+  
+  <label class="checklist-item col-span-3">Vitre latérale avant droite <input type="checkbox" id="check_vitre_avd"></label>
+  <label class="checklist-item col-span-3">Vitre latérale arrière droite <input type="checkbox" id="check_vitre_ard"></label>
+  
+  <label class="checklist-item col-span-3">Déflecteur avant droite <input type="checkbox" id="check_def_avd"></label>
+  <label class="checklist-item col-span-3">Déflecteur avant gauche <input type="checkbox" id="check_def_avg"></label>
+  
+  <label class="checklist-item col-span-3">Déflecteur arrière droite <input type="checkbox" id="check_def_ard"></label>
+  <label class="checklist-item col-span-3">Déflecteur arrière gauche <input type="checkbox" id="check_def_arg"></label>
+  
+  <label class="checklist-item col-span-3">Custode avant droite <input type="checkbox" id="check_custode_avd"></label>
+  <label class="checklist-item col-span-3">Custode arriére droite <input type="checkbox" id="check_custode_ard"></label>
+  
+  <label class="checklist-item col-span-3">Custode avant gauche <input type="checkbox" id="check_custode_avg"></label>
+  <label class="checklist-item col-span-3">Custode arriére gauche <input type="checkbox" id="check_custode_arg"></label>
+
+  <!-- Marque -->
+  <div class="col-span-6"><label>Marque du produit installé:</label> <input type="text" id="fiche_marque_produit" class="text-like-input w-100" /></div>
+</div>
+
+<!-- IDENTIFICATION DU SINISTRE -->
+<div class="client ">
+  <h4 class="section-title">Identification du sinistre</h4>
+  <div class="grid-table">
+    <div class="col-span-3"><label>Assuré:</label> <input type="text" id="fiche_assure" class="text-like-input font-bold w-100" /></div>
+    <div class="col-span-3"><label>Téléphone:</label> <input type="text" id="fiche_telephone" class="text-like-input w-100"  /></div>
+    
+    <div class="col-span-6"><label>Adresse:</label> <input type="text" id="fiche_adresse" class="text-like-input w-100" /></div>
+    
+    <div class="col-span-3"><label>Marque de véhicule:</label> <input type="text" id="fiche_marque_vehicule" class="text-like-input w-100" /></div>
+    <div class="col-span-3"><label>Modèle:</label> <input type="text" id="fiche_modele_vehicule" class="text-like-input w-100" /></div>
+    
+    <div class="col-span-3"><label>Immatriculation:</label> <input type="text" id="fiche_immatriculation" class="text-like-input w-100" /></div>
+    <div class="col-span-3"><label>Nº châssis:</label> <input type="text" id="fiche_chassis" class="text-like-input w-100" /></div>
+    
+    <div class="col-span-6"><label>N° de police:</label> <input type="text" id="fiche_police" class="text-like-input w-100" /></div>
+    
+    <div class="col-span-3"><label>Date d'effet:</label> <input type="text" id="fiche_date_effet" class="text-like-input w-100" /></div>
+    <div class="col-span-3"><label>Date d'échéance:</label> <input type="text" id="fiche_date_echeance" class="text-like-input w-100"  /></div>
+  </div>
+</div>
+
+      
+      <!-- DECLARATION DE L'ASSURE -->
+      <div class="ta3ahoud">
+
+          <p class="text-justify-sm mb-5">
+            Je soussigné(e) certifie l’exactitude des informations fournies ci-dessus et autorise la compagnie d’assurance à mandater un réparateur agréé pour la réparation ou le remplacement du vitrage endommagé, conformément aux conditions générales et particulières de mon contrat.
           </p>
-          <p>
-            J’accepte que la prise en charge soit effectuée en nature, sans
-            règlement direct entre mes mains, sous réserve de validation du
-            dossier.
+          <p class="text-justify-sm">
+            J’accepte que la prise en charge soit effectuée en nature, sans règlement direct entre mes mains, sous réserve de validation du dossier.
           </p>
-          <div style="display: flex; align-items: center; gap: 5px">
-            <label style="font-weight: 300">• Lieu et date : Taher, le:</label>
-            <input class="text-like-input" type="text" id="dateClient" />
+          <div class="flex-row align-center gap-5 mt-15">
+            <label class="">• Lieu et date : <strong>Taher, le</strong></label>
+            <input class="text-like-input w-150px" type="text" id="dateClient"  />
           </div>
-
-          <div style="display: flex; align-items: center; gap: 10px">
-            <label style="font-weight: 300">• Signature de l'assuré :</label>
-            <input class="text-like-input" type="text" id="signatureAssuré" />
+          <div class="flex-row align-center gap-10 mt-5">
+            <label class="">• Signature de l'assuré :</label>
           </div>
-        </div>
       </div>
 
+      <!-- SIGNATURES -->
       <div class="signiture-container">
-        <div>LE PRESTATAIRE</div>
-        <div>CLIENT/ASSURE</div>
+        <div class="font-bold">LE PRESTATAIRE</div>
+        <div class="font-bold">CLIENT/ASSURE</div>
         <div class="fichesignitures" id="cachetfiche">
-          <img
-            src="/images/empty1.png"
-            alt="cachet"
-            style="width: 100%; height: 100%"
-          />
+          <img src="/images/empty1.png" alt="cachet" class="w-100 h-100" />
         </div>
         <div class="fichesignitures" id="clientsigniture">
           <img src="/images/empty1.png" alt="cachet" />
         </div>
       </div>
     </div>
+
+
+    <!-- PAGE 2: FACTURE -->
     <div class="page">
       <div class="InvoiceHeader">
         <h1>FANTAZI NABIL</h1>
@@ -156,39 +159,15 @@
         <input class="text-like-input" type="text" id="dateFacture" />
       </div>
       <div class="InvoiceTop">
-        <div class="myinfo" style="grid-template-columns: 50px 1fr">
+        <div class="myinfo grid-50-1fr">
           <label for="RCN">RCN :</label>
-          <input
-            type="text"
-            id="RCN"
-            class="text-like-input"
-            value="18/00-2268677A20"
-            disabled
-          />
+          <input type="text" id="RCN" class="text-like-input" value="18/00-2268677A20" disabled />
           <label for="MFN">MFN :</label>
-          <input
-            type="text"
-            id="MFN"
-            class="text-like-input"
-            value="185182400637174"
-            disabled
-          />
+          <input type="text" id="MFN" class="text-like-input" value="185182400637174" disabled />
           <label for="AIN">AIN :</label>
-          <input
-            type="text"
-            id="AIN"
-            class="text-like-input"
-            value="18050142415"
-            disabled
-          />
+          <input type="text" id="AIN" class="text-like-input" value="18050142415" disabled />
           <label for="adresseFacture"></label>
-          <input
-            type="text"
-            id="adresseFacture"
-            class="text-like-input"
-            value="TAHER JIJEL"
-            disabled
-          />
+          <input type="text" id="adresseFacture" class="text-like-input" value="TAHER JIJEL" disabled />
         </div>
         <div class="clinetInvoiceInfo">
           <label for="clientNameFacture">Client :</label>
@@ -198,23 +177,12 @@
           <label for="modelFacture">Véhicule :</label>
           <input class="text-like-input" type="text" id="modelFacture" />
           <label for="ImmatriculationFacture">Immatriculation :</label>
-          <input
-            class="text-like-input"
-            type="text"
-            id="ImmatriculationFacture"
-          />
+          <input class="text-like-input" type="text" id="ImmatriculationFacture" />
         </div>
       </div>
       <div class="InvoiceNumber">
-        <label for="invoiceNumber" style="justify-self: end"
-          >Facture N° :</label
-        >
-        <input
-          class="text-like-input"
-          type="text"
-          id="invoiceNumber"
-          style="font-weight: bold; width: fit-content"
-        />
+        <label for="invoiceNumber" class="justify-self-end">Facture N° :</label>
+        <input class="text-like-input font-bold w-fit" type="text" id="invoiceNumber" />
       </div>
       <div class="table-container">
         <!-- Header Row -->
@@ -226,98 +194,53 @@
 
         <!-- Data Row -->
         <div class="cell center">1</div>
-        <div class="cell" style="display: flex; flex-direction: column">
-          <textarea
-            id="invoiceProductText"
-            class="text-like-input"
-            style="width: 100%; resize: none; overflow: hidden"
-          ></textarea>
+        <div class="cell flex-col">
+          <textarea id="invoiceProductText" class="text-like-input w-100 textarea-auto"></textarea>
         </div>
         <div class="cell center">
           <div>
-            <input
-              id="invoiceQ"
-              type="text"
-              value="1"
-              class="text-like-input"
-              style="width: 100%; text-align: center"
-            />
+            <input id="invoiceQ" type="text" value="1" class="text-like-input w-100 text-center" />
           </div>
         </div>
         <div class="cell numeric">
           <div class="numeric-input">
-            <input
-              id="invoicePU"
-              type="text"
-              class="text-like-input"
-              placeholder="0,00"
-            />
+            <input id="invoicePU" type="text" class="text-like-input" placeholder="0,00" />
           </div>
         </div>
         <div class="cell numeric">
           <div class="numeric-input">
-            <input
-              id="invoiceM"
-              type="text"
-              class="text-like-input"
-              placeholder="0,00"
-              disabled
-            />
+            <input id="invoiceM" type="text" class="text-like-input" placeholder="0,00" disabled />
           </div>
         </div>
 
         <!-- Total HT -->
-        <div class="cell total-row" style="grid-column: 4">TOTAL H.T:</div>
+        <div class="cell total-row grid-col-4">TOTAL H.T:</div>
         <div class="cell numeric">
           <div class="numeric-input">
-            <input
-              id="HT"
-              type="text"
-              class="text-like-input"
-              placeholder="0,00"
-              disabled
-            />
+            <input id="HT" type="text" class="text-like-input" placeholder="0,00" disabled />
           </div>
         </div>
 
         <!-- TVA -->
-        <div class="cell total-row" style="grid-column: 4">TVA 0%:</div>
+        <div class="cell total-row grid-col-4">TVA 0%:</div>
         <div class="cell numeric">
           <div class="numeric-input">
-            <input
-              id="TVA"
-              type="text"
-              class="text-like-input"
-              value="0,00 DA"
-              disabled
-            />
+            <input id="TVA" type="text" class="text-like-input" value="0,00 DA" disabled />
           </div>
         </div>
 
         <!-- Total TTC -->
-        <div class="cell total-row" style="grid-column: 4">TOTAL T.T.C:</div>
+        <div class="cell total-row grid-col-4">TOTAL T.T.C:</div>
         <div class="cell numeric">
           <div class="numeric-input">
-            <input
-              id="TTC"
-              type="text"
-              class="text-like-input"
-              placeholder="0,00"
-              disabled
-            />
+            <input id="TTC" type="text" class="text-like-input" placeholder="0,00" disabled />
           </div>
         </div>
       </div>
-      <div class="text" style="font-weight: 600">
+      <div class="font-600">
         Arrêté la présente facture à la somme de :
         <br />
-        <textarea
-          id="toletters"
-          type="text"
-          style="width: 100%; resize: none; overflow: hidden"
-          class="text-like-input"
-        >
-        </textarea>
+        <textarea id="toletters" type="text" class="text-like-input w-100 textarea-auto"></textarea>
       </div>
       <div class="invoiceSignature">
         <div class="sig-label">SIGNATURE</div>
@@ -331,7 +254,7 @@
         </div>
       </div>
       <div class="footer">
-        <span style="align-self: flex-end">Siège social: Taher - Jijel</span>
+        <span class="align-self-end">Siège social: Taher - Jijel</span>
         <span>Telephone: 0775 38 39 64 - 0656 95 93 41</span>
       </div>
     </div>
