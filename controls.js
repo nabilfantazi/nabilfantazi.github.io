@@ -3,7 +3,6 @@ const saveAsImageButton = document.getElementById("saveAsImage");
 
 const copyInput = document.getElementById("copyInput");
 const copyFeedback = document.getElementById("copyFeedback");
-
 /////////////////////////////////////
 function parseJiraXML(xmlString) {
   const parser = new DOMParser();
@@ -56,9 +55,6 @@ printPageButton.addEventListener("click", () => {
 //     console.log("Captured image URL:", img);
 //   }
 // });
-
-/////////////////////////////////////
-// Native function to inject PPI metadata into the JPEG base64 string
 function changeDpiDataUrl(base64Image, dpi) {
   const dataParts = base64Image.split(",");
   if (!dataParts[0].includes("image/jpeg")) return base64Image;
@@ -83,19 +79,11 @@ function changeDpiDataUrl(base64Image, dpi) {
 
   return dataParts[0] + "," + btoa(decodedString);
 }
-
 saveAsImageButton.addEventListener("click", () => {
-  const exportAsJpeg = (
-    element,
-    filename,
-    ppiScale = 3.125,
-    quality = 0.75,
-    targetDpi = 300,
-  ) => {
+  const exportAsJpeg = (element, filename, ppiScale = 1.5625, quality = 0.75) => {
     htmlToImage
       .toJpeg(element, { cacheBust: true, pixelRatio: ppiScale, quality })
       .then((dataUrl) => {
-        // Run the base64 URL through our native DPI changer
         const dataUrlWithDpi = changeDpiDataUrl(dataUrl, targetDpi);
 
         element.classList.add("page");
@@ -110,29 +98,15 @@ saveAsImageButton.addEventListener("click", () => {
   };
 
   const [ficheNode, factureNode] = document.querySelectorAll(".page");
-
   ficheNode.classList.add("pagetoimage");
   ficheNode.classList.remove("page");
   factureNode.classList.add("pagetoimage");
   factureNode.classList.remove("page");
 
-  // 3.125 gets you the pixel density for 300 PPI
   const ppiScale = 3.125;
-  const jpegQuality = 0.55;
-  const targetDpi = 150;
+  const jpegQuality = 0.75;
+  const targetDpi = 300;
 
-  exportAsJpeg(
-    ficheNode,
-    `Fiche d'intervention - ${document.title}.jpg`,
-    ppiScale,
-    jpegQuality,
-    targetDpi,
-  );
-  exportAsJpeg(
-    factureNode,
-    `Facture - ${document.title}.jpg`,
-    ppiScale,
-    jpegQuality,
-    targetDpi,
-  );
+  exportAsJpeg(ficheNode, `Fiche d'intervention - ${document.title}.jpg`, ppiScale, jpegQuality);
+  exportAsJpeg(factureNode, `Facture - ${document.title}.jpg`, ppiScale, jpegQuality);
 });
