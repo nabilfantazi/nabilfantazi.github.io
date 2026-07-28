@@ -103,7 +103,7 @@ saveAsImageButton.addEventListener("click", () => {
   factureNode.classList.add("pagetoimage");
   factureNode.classList.remove("page");
 
-  const ppiScale = 3.125;
+  const ppiScale = 3.125; // 1.5625 * 2 for higher resolution
   const jpegQuality = 0.75;
   const targetDpi = 300;
 
