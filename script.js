@@ -296,7 +296,7 @@ function fillInterventionForm(data) {
   }
 
   // --- Vehicle Identification ---
-  const { marque, modele } = getVehicleDetails(data.data.brand);
+  const { marque, modele } = getVehicleDetails(data.brand);
   
   if (document.getElementById("fiche_marque_vehicule")) {
     document.getElementById("fiche_marque_vehicule").value = marque;
