@@ -253,15 +253,11 @@ function fillInterventionForm(data) {
 
   // --- Dynamic Checkboxes (Nature of Intervention) ---
   // Checks boxes based on exact text matches between the JSON array and HTML labels.
-  if (data.nature && Array.isArray(data.vitre)) {
+  if (data.vitre) {
     const checklistLabels = document.querySelectorAll(".checklist-item");
-
-    data.nature.forEach((natureItem) => {
-      const itemToMatch = natureItem.trim().toUpperCase();
-
+    const itemToMatch = data.vitre.trim().toUpperCase();
       checklistLabels.forEach((label) => {
         const labelText = label.textContent.trim().toUpperCase();
-
         // If the label text matches the data item, find and check the associated checkbox
         if (labelText === itemToMatch) {
           const checkbox = label.querySelector('input[type="checkbox"]');
@@ -270,7 +266,7 @@ function fillInterventionForm(data) {
           }
         }
       });
-    });
+
   }
 
   // --- Client / Assuré Information ---
