@@ -226,14 +226,6 @@ const formatDate = (dateString) => {
   return `${day}/${month}/${year}`;
 };
 
-// Helper to extract Marque and Modèle from 'vehicle_model'
-const getVehicleDetails = (vehicleString) => {
-  if (!vehicleString) return { marque: "", modele: "" };
-  const parts = vehicleString.split(" ");
-  const marque = parts[0] || "";
-  const modele = parts.slice(1).join(" ") || "";
-  return { marque, modele };
-};
 function fillInterventionForm(data) {
   // =========================================================
   // 1. GENERAL DATES
@@ -296,13 +288,12 @@ function fillInterventionForm(data) {
   }
 
   // --- Vehicle Identification ---
-  const { marque, modele } = getVehicleDetails(data.brand);
-  
+
   if (document.getElementById("fiche_marque_vehicule")) {
-    document.getElementById("fiche_marque_vehicule").value = marque;
+    document.getElementById("fiche_marque_vehicule").value = data.marque;
   }
   if (document.getElementById("fiche_modele_vehicule")) {
-    document.getElementById("fiche_modele_vehicule").value = modele;
+    document.getElementById("fiche_modele_vehicule").value = data.modele;
   }
   if (document.getElementById("fiche_immatriculation")) {
     document.getElementById("fiche_immatriculation").value = data.license || "";
