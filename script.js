@@ -211,27 +211,12 @@ function NumberToLetter(nombre, U = null, D = null) {
   return numberToLetter;
 }
 
-// Helper to parse dates and format them as dd/mm/yyyy
-const formatDate = (dateString) => {
-  if (!dateString) return "";
-  const d = new Date(dateString);
-
-  // If the date is invalid, return the original string as a fallback
-  if (isNaN(d.getTime())) return dateString;
-
-  const day = String(d.getDate()).padStart(2, "0");
-  const month = String(d.getMonth() + 1).padStart(2, "0");
-  const year = d.getFullYear();
-
-  return `${day}/${month}/${year}`;
-};
-
 function fillInterventionForm(data) {
   // =========================================================
   // 1. GENERAL DATES
   // =========================================================
   // Note: These are set to today's date by default, but can be updated manually.
-  
+
   if (document.getElementById("date")) {
     document.getElementById("date").value = data.dateRDV;
   }
@@ -242,7 +227,7 @@ function fillInterventionForm(data) {
   // =========================================================
   // 2. MAPPED FIELDS (Populated directly from JSON data)
   // =========================================================
-  
+
   // --- Accident & Dossier Details ---
   if (document.getElementById("fiche_dossier")) {
     document.getElementById("fiche_dossier").value = data.dossier || "";
@@ -256,31 +241,33 @@ function fillInterventionForm(data) {
   if (data.vitre) {
     const checklistLabels = document.querySelectorAll(".checklist-item");
     const itemToMatch = data.vitre.trim().toUpperCase();
-      checklistLabels.forEach((label) => {
-        const labelText = label.textContent.trim().toUpperCase();
-        // If the label text matches the data item, find and check the associated checkbox
-        if (labelText === itemToMatch) {
-          const checkbox = label.querySelector('input[type="checkbox"]');
-          if (checkbox) {
-            checkbox.checked = true;
-          }
+    checklistLabels.forEach((label) => {
+      const labelText = label.textContent.trim().toUpperCase();
+      // If the label text matches the data item, find and check the associated checkbox
+      if (labelText === itemToMatch) {
+        const checkbox = label.querySelector('input[type="checkbox"]');
+        if (checkbox) {
+          checkbox.checked = true;
         }
-      });
-
+      }
+    });
   }
 
   // --- Client / Assuré Information ---
   if (document.getElementById("fiche_assure")) {
     // Fallbacks to fname + lname if full_name is missing
-    document.getElementById("fiche_assure").value = `${data.lastname} ${data.firstname}`;
+    document.getElementById("fiche_assure").value =
+      `${data.lastname} ${data.firstname}`;
   }
   // --- Client Address & Phone ---
-   if (document.getElementById("fiche_adresse")) {
+  if (document.getElementById("fiche_adresse")) {
     document.getElementById("fiche_adresse").value = data.clientAddress || "";
   }
   if (document.getElementById("fiche_telephone")) {
     // Strips out any non-numeric characters (e.g., dots, spaces)
-    document.getElementById("fiche_telephone").value = (data.phone || "").replace(/[^\d/]/g, "").replace(/\//g, " / ");
+    document.getElementById("fiche_telephone").value = (data.phone || "")
+      .replace(/[^\d/]/g, "")
+      .replace(/\//g, " / ");
   }
 
   // --- Vehicle Identification ---
@@ -301,10 +288,10 @@ function fillInterventionForm(data) {
   }
   if (document.getElementById("fiche_date_effet")) {
     // Requires the 'formatDate' helper function to be present in the script
-    document.getElementById("fiche_date_effet").value = formatDate(data.date1);
+    document.getElementById("fiche_date_effet").value = data.date1;
   }
   if (document.getElementById("fiche_date_echeance")) {
-    document.getElementById("fiche_date_echeance").value = formatDate(data.date2);
+    document.getElementById("fiche_date_echeance").value = data.date2;
   }
 
   // =========================================================
@@ -325,12 +312,12 @@ function fillInterventionForm(data) {
   if (document.getElementById("fiche_ville_accident")) {
     document.getElementById("fiche_ville_accident").value = "";
   }
-  
+
   // --- Miscellaneous ---
   if (document.getElementById("fiche_marque_produit")) {
     document.getElementById("fiche_marque_produit").value = "";
   }
- 
+
   if (document.getElementById("fiche_chassis")) {
     document.getElementById("fiche_chassis").value = "";
   }
@@ -342,7 +329,7 @@ window.addEventListener(
     if (!data || typeof data !== "object" || !data.lastname) return;
     console.log(data);
     document.title = `${data.lastname} ${data.firstname}`;
- fillInterventionForm(data);
+    fillInterventionForm(data);
     //////////////////// invoice /////////////////////////
     dateFactureInput.value = data.dateRDV;
     clientNameFactureInput.value = `${data.lastname} ${data.firstname}`;
@@ -375,4 +362,3 @@ window.addEventListener("load", () => {
     console.log("No opener window; skipping ready message.");
   }
 });
-
